@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect} from "react"
 import{FaBars, FaTwitter, FaLinkedin, FaInstagram} from "react-icons/fa"
+import { Link } from 'react-router-dom'
 
 export default function Navbar(){
     const [showLinks, setShowLinks] = useState(false);
@@ -17,42 +18,44 @@ export default function Navbar(){
       }
     }, [showLinks]);
     return(
-        <nav>
-            <div className="nav-center">
-                <div className="nav-header">
-                    <img src="./images/airbnb-logo.png" alt="logo" className="logo"/>
-                    <button className="nav-toggle" onClick={toggleLinks}>
-                        <FaBars />
-                    </button>
-                </div>
-                <div className="links-container" ref={linksContainerRef}>
-                    <ul className="links" ref={linksRef}>
-                        <li>
-                            <a href='#'>home</a>
+        <>
+        
+            <nav>
+                
+                <div className="nav-center">
+                    <div className="nav-header">
+                        <img src="./images/airbnb-logo.png" alt="logo" className="logo"/>
+                        <button className="nav-toggle" onClick={toggleLinks}>
+                            <FaBars />
+                        </button>
+                    </div>
+                    <div className="links-container" ref={linksContainerRef}>
+                        <ul className="links" ref={linksRef}>
+                            <li>
+                                <Link to="/home">home</Link>
+                            </li>
+                            
+                            <li>
+                                <Link to="/about">about</Link>
+                            </li>
+                            <li>
+                                <Link to="/contact-us">Contact Us</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul className="social-icons">
+                        <li className="twitter">
+                            <a href="https://www.twitter.com"><FaTwitter /></a>
+                        </li >
+                        <li className="instagram">
+                            <a href="https://www.instagram.com"><FaInstagram /></a>
                         </li>
-                        <li>
-                            <a href='#'>Our Services</a>
-                        </li>
-                        <li>
-                            <a href='#'>About</a>
-                        </li>
-                        <li>
-                            <a href='#'>Contact Us</a>
+                        <li className="linkedin">
+                            <a href="https://www.linkedin.com"><FaLinkedin /></a>
                         </li>
                     </ul>
                 </div>
-                <ul className="social-icons">
-                    <li className="twitter">
-                        <a href="https://www.twitter.com"><FaTwitter /></a>
-                    </li >
-                    <li className="instagram">
-                        <a href="https://www.instagram.com"><FaInstagram /></a>
-                    </li>
-                    <li className="linkedin">
-                        <a href="https://www.linkedin.com"><FaLinkedin /></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+            </nav>
+        </>
     )
 }
